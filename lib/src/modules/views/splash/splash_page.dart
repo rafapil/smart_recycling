@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:splash_view/source/source.dart';
-import '../../shared/themes/themes.dart';
-import '../controllers/splash/splash_page_controller.dart';
-import '../views/views.dart';
+import '../../../shared/themes/themes.dart';
+import 'splash_page_controller.dart';
+import '../views.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -26,7 +26,7 @@ class SplashPage extends StatelessWidget {
               if (snapshot.data == true) {
                 return ChatPage();
               } else {
-                return OnboardingPage();
+                return const OnboardingPage();
               }
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');

@@ -5,12 +5,5 @@ class SplashPageController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool seen = (prefs.getBool('seen') ?? false);
     return seen;
-    // if (seen) {
-    //   print('CAI AQUI !!!!!!!!!!!!!!!!!!');
-    //   return true;
-    // } else {
-    //   print('CAI ALIIIII !!!!!!!!!!!!!!!!!!');
-    //   return false;
-    // }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
+import 'package:smart_recycling/src/modules/views/onboarding/onboard_page_controller.dart';
 import 'package:smart_recycling/src/shared/themes/themes.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -7,49 +8,33 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color kDarkBlueColor =
-        const Color(0xFF053149); // TODO remover apos ajustes
+    final OnboardPageController onboardPageController = OnboardPageController();
+    var widthScreen = MediaQuery.of(context).size.width;
+
     return OnBoardingSlider(
       finishButtonText: 'começar',
       onFinish: () {
-        // Navigator.push(
-        //   context,
-        //   // CupertinoPageRoute(
-        //   //   builder: (context) => const RegisterPage(),
-        //   // ),
-        // );
+        onboardPageController.setPrefsToComplete().whenComplete(() {
+          Navigator.pushReplacementNamed(context, '/chat');
+        });
       },
-      finishButtonStyle: FinishButtonStyle(
-        backgroundColor: kDarkBlueColor,
+      finishButtonStyle: const FinishButtonStyle(
+        backgroundColor: AppColors.strongGreen,
       ),
       skipTextButton: Text(
         'Pular',
-        style: TextStyle(
-          fontSize: 16,
-          color: kDarkBlueColor,
-          fontWeight: FontWeight.w600,
-        ),
+        style: AppTextStyles.txtTextForm,
       ),
-      // trailing: Container(),
       trailing: Text(
-        'comecar e não repetir',
-        style: TextStyle(
-          fontSize: 16,
-          color: kDarkBlueColor,
-          fontWeight: FontWeight.w600,
-        ),
+        'comecar e repetir novamente',
+        style: AppTextStyles.txtTextForm,
       ),
-      // trailingFunction: () {
-      //   // Navigator.push(
-      //   //   context,
-      //   //   CupertinoPageRoute(
-      //   //     builder: (context) => const LoginPage(),
-      //   //   ),
-      //   // );
-      // },
-      controllerColor: kDarkBlueColor,
+      trailingFunction: () {
+        Navigator.pushReplacementNamed(context, '/chat');
+      },
+      controllerColor: AppColors.lightGreen,
       totalPage: 3,
-      headerBackgroundColor: Color.fromARGB(0, 244, 235, 222),
+      headerBackgroundColor: const Color.fromARGB(0, 244, 235, 222),
       // pageBackgroundColor: Colors.white,
       // centerBackground: true,
       background: [
@@ -82,7 +67,7 @@ class OnboardingPage extends StatelessWidget {
       pageBodies: [
         Container(
           alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width,
+          width: widthScreen,
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -94,30 +79,22 @@ class OnboardingPage extends StatelessWidget {
               Text(
                 'Titulo AAA',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: kDarkBlueColor,
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppTextStyles.txtTitle,
               ),
               const SizedBox(
                 height: 20,
               ),
-              const Text(
+              Text(
                 'sub titulo aaa',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppTextStyles.txtSubTitle,
               ),
             ],
           ),
         ),
         Container(
           alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width,
+          width: widthScreen,
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -129,30 +106,22 @@ class OnboardingPage extends StatelessWidget {
               Text(
                 'Titulo BBB',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: kDarkBlueColor,
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppTextStyles.txtTitle,
               ),
               const SizedBox(
                 height: 20,
               ),
-              const Text(
+              Text(
                 'sub titulo bbb',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppTextStyles.txtSubTitle,
               ),
             ],
           ),
         ),
         Container(
           alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width,
+          width: widthScreen,
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -164,23 +133,15 @@ class OnboardingPage extends StatelessWidget {
               Text(
                 'Titulo Final',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: kDarkBlueColor,
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppTextStyles.txtTitle,
               ),
               const SizedBox(
                 height: 20,
               ),
-              const Text(
+              Text(
                 'sub titulo final',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppTextStyles.txtSubTitle,
               ),
             ],
           ),

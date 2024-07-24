@@ -41,6 +41,8 @@ dependencies:
   splash_view: ^2.0.1
   shared_preferences: ^2.2.3
   flutter_onboarding_slider: ^1.0.11
+  camera: ^0.11.0+1
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

@@ -3,6 +3,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_recycling/src/shared/themes/app_colors.dart';
 
 class AppTextStyles {
+  static final txtTitle = GoogleFonts.notoSans(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+    color: AppColors.strongGreen,
+  );
+
+  static final txtSubTitle = GoogleFonts.notoSans(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
+
   static final txtButtomBlack = GoogleFonts.notoSans(
     fontSize: 16,
     fontWeight: FontWeight.w700,
@@ -18,7 +30,13 @@ class AppTextStyles {
   static final txtTextForm = GoogleFonts.notoSans(
     fontSize: 16,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
+    color: AppColors.strongGreen,
+  );
+
+  static final txtTextFormWhite = GoogleFonts.notoSans(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
   );
 
   static final txtTextFormHint = GoogleFonts.notoSans(
