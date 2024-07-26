@@ -24,7 +24,7 @@ class SplashPage extends StatelessWidget {
           builder: (_, snapshot) {
             if (snapshot.hasData) {
               if (snapshot.data == true) {
-                return ChatPage();
+                return const ChatPage();
               } else {
                 return const OnboardingPage();
               }
