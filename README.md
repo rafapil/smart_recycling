@@ -1,4 +1,4 @@
-# smart_recycling
+# Smart Recycling
 
 A new Flutter project.
 
