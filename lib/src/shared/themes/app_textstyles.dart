@@ -15,6 +15,12 @@ class AppTextStyles {
     color: AppColors.white,
   );
 
+  static final txtSubTitleBlack = GoogleFonts.notoSans(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black,
+  );
+
   static final txtButtomBlack = GoogleFonts.notoSans(
     fontSize: 16,
     fontWeight: FontWeight.w700,

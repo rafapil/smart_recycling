@@ -15,7 +15,7 @@ class OnboardingPage extends StatelessWidget {
       finishButtonText: 'começar',
       onFinish: () {
         onboardPageController.setPrefsToComplete().whenComplete(() {
-          Navigator.pushReplacementNamed(context, '/chat');
+          Navigator.pushReplacementNamed(context, '/add');
         });
       },
       finishButtonStyle: const FinishButtonStyle(
@@ -30,7 +30,7 @@ class OnboardingPage extends StatelessWidget {
         style: AppTextStyles.txtTextForm,
       ),
       trailingFunction: () {
-        Navigator.pushReplacementNamed(context, '/chat');
+        Navigator.pushReplacementNamed(context, '/add');
       },
       controllerColor: AppColors.lightGreen,
       totalPage: 3,

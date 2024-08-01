@@ -20,7 +20,7 @@ class AppButtom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(width: 2.0, color: Colors.black),
+        border: Border.all(width: 0.5, color: Colors.black12),
         color: color,
         borderRadius: BorderRadius.circular(5.0),
       ),
