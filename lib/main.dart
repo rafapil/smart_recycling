@@ -1,8 +1,19 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_recycling/src/shared/models/recycle_model.dart';
 import 'app_widget.dart';
 
 void main() {
-  runApp(const AppWidget());
+  // ChangeNotifierProvider(
+  //   create: (context) => RecycleModel(),
+  //   child: AppWidget(),
+  // );
+
+  runApp(ChangeNotifierProvider(
+    create: (context) => RecycleModel(),
+    child: const AppWidget(),
+  ));
 }
 
 // class MyApp extends StatelessWidget {
