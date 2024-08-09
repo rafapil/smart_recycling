@@ -17,7 +17,7 @@ class AppPickPhoto extends StatelessWidget {
     return GestureDetector(
       child: Container(
         color: const Color.fromARGB(80, 201, 200, 200),
-        height: 200,
+        height: 320,
         width: double.infinity,
         child: isImage
             ? Center(
@@ -25,7 +25,7 @@ class AppPickPhoto extends StatelessWidget {
                 File(image!.path),
                 fit: BoxFit.cover,
                 width: double.infinity,
-                height: 200,
+                height: 320,
               ))
             : const Center(
                 child: Column(

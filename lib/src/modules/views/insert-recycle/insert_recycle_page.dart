@@ -109,11 +109,9 @@ class _InsertRecyclePageState extends State<InsertRecyclePage> {
                               disabledHint: const Text(
                                   'Selecione o que quer fazer com o material'),
                               dropdownColor: AppColors.lightGreen,
-                              value: _selectedValue,
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  _selectedValue = newValue!;
-                                });
+                              value: recycleModel.selection,
+                              onChanged: (newValue) {
+                                recycleModel.setSelection(newValue!);
                               },
                               items: dropdownItems),
                         ],

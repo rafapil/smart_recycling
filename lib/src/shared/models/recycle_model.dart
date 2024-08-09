@@ -5,6 +5,7 @@ class RecycleModel with ChangeNotifier {
   final ImagePicker _picker = ImagePicker();
   XFile? _image;
   String? _address;
+  String? selection = "";
   bool isLoading = false;
 
   XFile? get image => _image;
@@ -25,6 +26,11 @@ class RecycleModel with ChangeNotifier {
 
   void setLoading(bool loading) {
     isLoading = loading;
+    notifyListeners();
+  }
+
+  void setSelection(String value) {
+    selection = value;
     notifyListeners();
   }
 }
