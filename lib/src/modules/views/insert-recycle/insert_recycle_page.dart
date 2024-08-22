@@ -30,7 +30,6 @@ class _InsertRecyclePageState extends State<InsertRecyclePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary,
       appBar: AppBar(
         title: Row(
           children: [
@@ -129,18 +128,23 @@ class _InsertRecyclePageState extends State<InsertRecyclePage> {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: recycleModel.isLoading
-                          ? const CircularProgressIndicator()
+                          ? const SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation(
+                                    AppColors.strongGreen),
+                                strokeWidth: 3.0,
+                              ),
+                            )
                           : Text(recycleModel.address ??
                               'Nenhum local carregado!'),
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
