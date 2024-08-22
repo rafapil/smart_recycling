@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 
+/// Classe responsavel pelo Provider (gerencia de estado da aplicação)
 class RecycleModel with ChangeNotifier {
   final ImagePicker _picker = ImagePicker();
   XFile? _image;
   String? _address;
-  String? selection = "";
+  String? selection = '';
   bool isLoading = false;
 
   XFile? get image => _image;

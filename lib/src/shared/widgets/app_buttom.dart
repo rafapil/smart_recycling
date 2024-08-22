@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// A classe AppButtom é responsável pelo botão
 class AppButtom extends StatelessWidget {
   final double width;
   final String textoButtom;
@@ -8,13 +9,12 @@ class AppButtom extends StatelessWidget {
   final VoidCallback function;
 
   const AppButtom(
-      {Key? key,
+      {super.key,
       required this.width,
       required this.textoButtom,
       required this.buttomStyle,
       required this.color,
-      required this.function})
-      : super(key: key);
+      required this.function});
 
   @override
   Widget build(BuildContext context) {

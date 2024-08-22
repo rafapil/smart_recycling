@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../themes/app_textstyles.dart';
 
+/// A classe AppCustomTextField é responsável pelo campo de texto
 class AppCustomTextField extends StatelessWidget {
   final String title;
   final String hint;
@@ -13,15 +14,14 @@ class AppCustomTextField extends StatelessWidget {
   final String? validatorText;
 
   const AppCustomTextField(
-      {Key? key,
+      {super.key,
       this.title = '',
       required this.hint,
       this.textEditingController,
       required this.type,
       this.oculto = false,
       this.validator,
-      this.validatorText})
-      : super(key: key);
+      this.validatorText});
 
   @override
   Widget build(BuildContext context) {

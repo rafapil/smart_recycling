@@ -1,6 +1,7 @@
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
+/// Controller da InsertRecyclePage que defini os valores de localização e faz as validações de campos.
 class InsertRecycleController {
   Future<String> getUserLocation() async {
     bool permissionGranted = await checkPermission();
@@ -12,12 +13,13 @@ class InsertRecycleController {
 
       Placemark place = placemarks[0];
 
-      return "${place.street}, ${place.subLocality}, ${place.administrativeArea}";
+      return '${place.street}, ${place.subLocality}, ${place.administrativeArea}';
     } else {
-      return "Permission not granted";
+      return 'Permission not granted';
     }
   }
 
+  /// Função que valida as permissões dadas pelo usuário para usar a geolocalização
   Future<bool> checkPermission() async {
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
@@ -30,6 +32,15 @@ class InsertRecycleController {
       }
     } else {
       return true;
+    }
+  }
+
+  /// função que valida se todos os campos foram preenchidos.
+  bool validateInfo([photo, type, locate]) {
+    if (photo != null && type != null && locate != null) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

@@ -1,5 +1,3 @@
-// import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_recycling/src/shared/models/recycle_model.dart';
@@ -7,6 +5,7 @@ import '../../../shared/themes/themes.dart';
 import '../../../shared/widgets/widgets.dart';
 import 'insert_recycle_controller.dart';
 
+/// Pagina para inserir a imagem do item que deseja reciclar e definir suas opções de pesquisa no Google Gemini
 class InsertRecyclePage extends StatefulWidget {
   const InsertRecyclePage({super.key});
 
@@ -18,24 +17,37 @@ class _InsertRecyclePageState extends State<InsertRecyclePage> {
   final InsertRecycleController insertRecycleController =
       InsertRecycleController();
 
-// temp data for test's
   List<DropdownMenuItem<String>> get dropdownItems {
     List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(child: Text("Selecione"), value: ""),
-      DropdownMenuItem(child: Text("Reciclar"), value: "recycle"),
-      DropdownMenuItem(child: Text("Criar"), value: "create"),
-      DropdownMenuItem(child: Text("Descartar"), value: "drop"),
+      const DropdownMenuItem(value: '', child: Text('Selecione')),
+      const DropdownMenuItem(value: 'reciclar', child: Text('Reciclar')),
+      const DropdownMenuItem(value: 'criar', child: Text('Criar')),
+      const DropdownMenuItem(value: 'descartar', child: Text('Descartar')),
     ];
     return menuItems;
   }
-
-  String _selectedValue = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primary,
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Image.asset(
+              AppImages.imageApp,
+              height: 36,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Text(
+              'Smart Recycling',
+              style: AppTextStyles.txtSubTitle,
+            )
+          ],
+        ),
+      ),
       body: Consumer<RecycleModel>(
         builder: (_, recycleModel, __) {
           return Padding(
@@ -125,7 +137,7 @@ class _InsertRecyclePageState extends State<InsertRecyclePage> {
                       child: recycleModel.isLoading
                           ? const CircularProgressIndicator()
                           : Text(recycleModel.address ??
-                              "Nenhum local carregado!"),
+                              'Nenhum local carregado!'),
                     ),
                     const SizedBox(
                       height: 30,
@@ -134,7 +146,7 @@ class _InsertRecyclePageState extends State<InsertRecyclePage> {
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: AppButtom(
                         width: double.infinity,
-                        textoButtom: 'Obter a minha localição aproximada',
+                        textoButtom: 'Obter localição aproximada',
                         buttomStyle: AppTextStyles.txtButtomWhite,
                         color: AppColors.lightGreen,
                         function: () async {
@@ -160,7 +172,36 @@ class _InsertRecyclePageState extends State<InsertRecyclePage> {
           textoButtom: 'Obter informações',
           buttomStyle: AppTextStyles.txtButtomWhite,
           color: AppColors.orange,
-          function: () {},
+          function: () async {
+            final recycleModel =
+                Provider.of<RecycleModel>(context, listen: false);
+            if (insertRecycleController.validateInfo(recycleModel.image,
+                recycleModel.selection, recycleModel.address)) {
+              Navigator.popAndPushNamed(context, '/chat');
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  action: SnackBarAction(
+                    textColor: AppColors.orange,
+                    label: 'Close',
+                    onPressed:
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar,
+                  ),
+                  content: const Text('Insira todas as informações!'),
+                  duration: const Duration(milliseconds: 3000),
+                  width: 320.0,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 8.0,
+                  ),
+                  behavior: SnackBarBehavior.floating,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                ),
+              );
+            }
+          },
         ),
       ),
     );

@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+/// A classe AppPickPhoto é responsavel por gerar uma area para input/seleção de imagem que alterna seu estado após receber uma imagem
+/// O retorno default é uma caixa com o ícone de camera para seleção
 class AppPickPhoto extends StatelessWidget {
   final bool isImage;
   final XFile? image;

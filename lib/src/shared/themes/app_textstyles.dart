@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_recycling/src/shared/themes/app_colors.dart';
 
+/// A classe AppTextStyles é responsável pela definição das fontes usadas na aplicação
 class AppTextStyles {
   static final txtTitle = GoogleFonts.notoSans(
-    fontSize: 22,
-    fontWeight: FontWeight.w600,
+    fontSize: 28,
+    fontWeight: FontWeight.w800,
     color: AppColors.strongGreen,
   );
 
