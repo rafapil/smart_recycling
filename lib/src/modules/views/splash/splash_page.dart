@@ -1,42 +1,61 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:splash_view/source/source.dart';
 import '../../../shared/themes/themes.dart';
 import 'splash_page_controller.dart';
-import '../views.dart';
 
 /// Pagina responsável pela SplashPage (inicio da aplicação)
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final SplashPageController splashPageController = SplashPageController();
+  State<SplashPage> createState() => _SplashPageState();
+}
 
-    return SplashView(
-      backgroundImageDecoration: const BackgroundImageDecoration(
-        image: AssetImage(AppImages.backgroundImageApp),
+class _SplashPageState extends State<SplashPage> {
+  final SplashPageController splashPageController = SplashPageController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    Timer(const Duration(seconds: 3), () async {
+      if (await splashPageController.validatePrefs()) {
+        // ignore: use_build_context_synchronously
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('/chat', (Route<dynamic> route) => false);
+      } else {
+        // ignore: use_build_context_synchronously
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            '/onboard', (Route<dynamic> route) => false);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: [
+      Image.asset(
+        AppImages.backgroundImageApp,
+        fit: BoxFit.fill,
+        height: double.infinity,
       ),
-      loadingIndicator: const CircularProgressIndicator(),
-      logo: Image.asset(AppImages.logoImageApp),
-      done: Done(
-        /// Neste trecho FutureBuilder é usado para recuperar o valor de validatePrefs que carrega na shared Preferences true ou false para escolha do usuário em ver novamente a OnboardScreen.
-        FutureBuilder(
-          future: splashPageController.validatePrefs(),
-          builder: (_, snapshot) {
-            if (snapshot.hasData) {
-              if (snapshot.data == true) {
-                return const ChatPage();
-              } else {
-                return const OnboardingPage();
-              }
-            } else if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
-            } else {
-              return const CircularProgressIndicator();
-            }
-          },
+      Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              AppImages.logoImageApp,
+              fit: BoxFit.contain,
+              height: 160,
+            ),
+            const CircularProgressIndicator(
+              color: AppColors.strongGreen,
+              valueColor: AlwaysStoppedAnimation(AppColors.strongGreen),
+              strokeWidth: 3.0,
+            ),
+          ],
         ),
       ),
-    );
+    ]);
   }
 }

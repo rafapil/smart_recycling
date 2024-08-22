@@ -13,7 +13,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^6.2.1
   flutter_gemini: ^2.0.5
-  splash_view: ^2.0.1
   shared_preferences: ^2.2.3
   flutter_onboarding_slider: ^1.0.11
   camera: ^0.11.0+1
@@ -31,8 +30,8 @@ dev_dependencies:
 
   flutter_lints: ^4.0.0
   flutter_launcher_icons: ^0.13.1
-  mockito: ^5.0.0
-  build_runner: ^2.1.11
+  mockito: ^5.4.0
+  build_runner: ^2.3.3
 
 flutter_launcher_icons:
   android: true
