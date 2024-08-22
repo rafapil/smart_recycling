@@ -5,24 +5,24 @@ import 'splash_page_controller.dart';
 
 /// Pagina responsável pela SplashPage (inicio da aplicação)
 class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
+  final SplashPageController controller;
+
+  const SplashPage({super.key, required this.controller});
 
   @override
   State<SplashPage> createState() => _SplashPageState();
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final SplashPageController splashPageController = SplashPageController();
-
   @override
   void initState() {
     super.initState();
 
     Timer(const Duration(seconds: 3), () async {
-      if (await splashPageController.validatePrefs()) {
+      if (await widget.controller.validatePrefs()) {
         // ignore: use_build_context_synchronously
         Navigator.of(context)
-            .pushNamedAndRemoveUntil('/chat', (Route<dynamic> route) => false);
+            .pushNamedAndRemoveUntil('/add', (Route<dynamic> route) => false);
       } else {
         // ignore: use_build_context_synchronously
         Navigator.of(context).pushNamedAndRemoveUntil(

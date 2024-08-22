@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_recycling/src/modules/views/splash/splash.dart';
 import 'src/modules/views/views.dart';
 import 'src/shared/themes/themes.dart';
 
@@ -8,6 +9,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SplashPageController splashPageController = SplashPageController();
     return MaterialApp(
       // title: 'smart recycling',
       debugShowCheckedModeBanner: false,
@@ -22,7 +24,7 @@ class AppWidget extends StatelessWidget {
 
       /// Rotas da aplicação
       routes: {
-        '/splash': (context) => const SplashPage(),
+        '/splash': (context) => SplashPage(controller: splashPageController),
         '/onboard': (context) => const OnboardingPage(),
         '/add': (context) => const InsertRecyclePage(),
         '/chat': (context) => const ChatPage(),
